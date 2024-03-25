@@ -1,63 +1,61 @@
 "use client";
+import { url } from "inspector";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Marquee from "react-fast-marquee";
 
 export default function Banner() {
-  const [index, setIndex] = useState(0);
-
-  const coverImages = ["cover.jpg", "cover2.jpg", "cover3.jpg", "cover4.jpg"];
-
   const router = useRouter();
 
   const { data: session } = useSession();
 
+  const imgList = [
+    "https://www.brandbuffet.in.th/wp-content/uploads/2019/08/Samyan-COOP-1.jpg",
+    "https://p16-va.lemon8cdn.com/tos-alisg-v-a3e477-sg/c8c10f6c3a4c4a969c9b6c967fe6b8f8~tplv-tej9nj120t-origin.webp",
+    "https://assets.brandinside.asia/uploads/2022/07/KLOUD-27.jpeg",
+    "https://morphosis-staging.s3.ap-southeast-1.amazonaws.com/wpuploads/2022-front-co-working-inside.jpg",
+    "https://sgp1.digitaloceanspaces.com/adaybulletin/2019/10/WEB_Space_truedigitalpark.jpg",
+    "https://www.terrabkk.com/images/upload/af178899ca2cc98fcf8a7114450d17a7.jpg",
+  ];
+
   return (
-    <div className="flex justify-start items-center relative h-[90vh]  ">
-      <Image
-        src={`/img/${coverImages[index]}`}
-        width={0}
-        height={0}
-        sizes="100vw"
-        className="w-full p-4 rounded-3xl"
-        objectFit="cover"
-        fill
-        alt=""
-        onClick={() => setIndex((index + 1) % 4)}
-      />
-      {session ? (
-        <h1 className="absolute top-10 right-10 text-white ">
-          Welcome {session.user.name}
+    <div className="my-40">
+      <div className="flex flex-col justify-center gap-7 w-full">
+        <span className="px-4 py-2 bg-blue-100 mx-auto max-w-max rounded-full text-blue-600">
+          caramel macchiato
+        </span>
+        <h1 className="max-w-4xl text-8xl font-black text-center mx-auto">
+          <span className="bg-gradient-to-b from-blue-700 to-blue-400 bg-clip-text text-transparent">
+            Co-working {" "}
+          </span>
+          Space Reservation
         </h1>
-      ) : (
-        ""
-      )}
-      <div className="absolute text-white space-y-6 p-28">
-        <h1 className=" text-8xl font-semibold ">
-          Vaccine <br />
-          Service Center
-        </h1>
-        <p className="text-white text-3xl font-thin">
-          ขอเชิญชวนประชาชนเข้ารับการฉีดวัคซีนเข็มกระตุ้น
+        <p className="max-w-xl text-center mx-auto">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et alias
+          assumenda
         </p>
         <Link
           href="/booking"
-          className="bg-[#3ED786]  text-white text-xl  py-2 px-5 rounded-xl inline-block duration-150 hover:bg-green-600"
+          className="bg-black max-w-max text-white px-6 py-3 mx-auto rounded-full"
         >
-          จองคิวเลย!
+          จองเลย
         </Link>
+        <Marquee speed={50} className="py-10">
+          {imgList.map((item) => (
+            <div
+              className="bg-blue-600 rounded-[40px] h-96 w-80 mx-5 "
+              style={{
+                backgroundImage: `url(${item})`,
+                backgroundSize: "cover",
+              }}  
+            />
+          ))}
+        </Marquee>
       </div>
-      <button
-        className="absolute bottom-10 right-10 bg-white px-5 py-1 rounded-full duration-150 hover:scale-105"
-        onClick={(e) => {
-          e.stopPropagation();
-          router.push("/hospital");
-        }}
-      >
-        Select Hospital
-      </button>
+      
     </div>
   );
 }
