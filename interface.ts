@@ -1,19 +1,28 @@
-interface HospitalItem {
+interface Reservation {
+  _id: string;
+  reserveDate: Date;
+  user: string;
+  workingSpace: string;
+  createdAt: Date;
+  __v: number;
+}
+
+interface SpaceItem {
   _id: string;
   name: string;
   address: string;
-  district: string;
-  province: string;
-  postalcode: string;
   tel: string;
-  picture: string;
+  openTime: string;
+  closeTime: string;
+  remaining: string;
   __v: number;
+  reservation: Reservation[];
   id: string;
 }
 
-interface HospitalJson {
+interface SpaceJson {
   success: boolean;
   count: number;
   pagination: Object;
-  data: HospitalItem[];
+  data: SpaceItem[];
 }
