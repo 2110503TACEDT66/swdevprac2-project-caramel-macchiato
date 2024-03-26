@@ -18,6 +18,7 @@ export interface SpaceItem {
   __v: number;
   reservation: Reservation[];
   id: string;
+  image:string
 }
 
 export interface SpaceJson {
