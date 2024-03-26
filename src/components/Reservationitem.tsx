@@ -8,16 +8,23 @@ import { redirect } from "next/navigation";
 import { Reservation } from "../../interface";
 import DeleteReservation from "@/libs/deleteReserve";
 import { useSession } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 export default function ReservationItem({
   reservation,
 }: {
   reservation: Reservation;
 }) {
   const session = useSession();
+  const router = useRouter();
+
   const handleDelete = (e: any) => {
     e.preventDefault();
     const result = DeleteReservation(reservation._id, session.data!.user.token);
+  };
+
+  const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    router.push(`/booking/edit/${reservation._id}`); // Navigate to the manage page with the reservation ID
   };
 
   return (
@@ -26,7 +33,10 @@ export default function ReservationItem({
       <p>User: {reservation.user}</p>
       <p>Working Space: {reservation.workingSpace.name}</p>
       <div className="flex justify-end mt-2">
-        <button className="mr-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        <button
+          className="mr-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={handleEdit}
+        >
           Edit
         </button>
         <button

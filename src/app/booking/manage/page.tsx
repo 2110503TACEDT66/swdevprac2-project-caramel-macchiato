@@ -1,7 +1,7 @@
-export default async function manageMainPage() {
+export default async function managePage() {
   return (
     <main>
-      <div><h1>Manage page</h1></div>
+      <div> reservation manangePage</div>
     </main>
   );
 }
