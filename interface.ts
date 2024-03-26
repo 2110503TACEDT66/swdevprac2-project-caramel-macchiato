@@ -1,4 +1,4 @@
-interface Reservation {
+export interface Reservation {
   _id: string;
   reserveDate: Date;
   user: string;
