@@ -54,9 +54,14 @@ export default async function DashboardPage() {
             <td> {profile.data.tel} </td>
           </tr>
           <tr>
+            <td> Role </td>
+            <td> {profile.data.role} </td>
+          </tr>
+          <tr>
             <td> Member Since </td>
             <td> {createdAt.toString()} </td>
           </tr>
+          
         </tbody>
       </table>
 
