@@ -14,7 +14,7 @@ interface SpaceItem {
   tel: string;
   openTime: string;
   closeTime: string;
-  remaining: string;
+  remaining: number;
   __v: number;
   reservation: Reservation[];
   id: string;
