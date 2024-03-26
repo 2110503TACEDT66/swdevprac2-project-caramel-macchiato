@@ -11,6 +11,7 @@ interface Props {
 
 export default async function SpaceDetail({ params }: Props) {
   const space = await getSpace(params.id);
+  
 
   return (
     <div className="flex justify-center my-20   ">
@@ -42,7 +43,7 @@ export default async function SpaceDetail({ params }: Props) {
           </div>
 
           <div className="flex gap-2 items-center mt-5">
-            <ModalHandle space={space.data} />
+            <ModalHandle space={space.data} context="จองเลย" />
             <p>ที่ว่าง: {space.data.remaining}</p>
           </div>
         </div>

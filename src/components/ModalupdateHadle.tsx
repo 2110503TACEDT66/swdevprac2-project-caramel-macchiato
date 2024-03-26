@@ -1,16 +1,18 @@
 "use client";
 import React, { useState } from "react";
-import Modal from "./Modal";
+import Modalupdate from "./Modalupdate";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { SpaceItem } from "../../interface";
 
-export default function ModalHandle({
+export default function ModalupdateHandle({
   space,
   context,
+  id
 }: {
   space: SpaceItem;
   context?: string;
+  id:string
 }) {
   const [open, setOpen] = useState(false);
 
@@ -38,7 +40,12 @@ export default function ModalHandle({
         </p>
       )}
 
-      <Modal isOpen={open} data={space} handleClose={() => setOpen(false)} />
+      <Modalupdate
+        isOpen={open}
+        data={space}
+        handleClose={() => setOpen(false)}
+        id={id}
+      />
     </div>
   );
 }
