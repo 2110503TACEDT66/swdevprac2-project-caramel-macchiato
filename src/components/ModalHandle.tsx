@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { SpaceItem } from "../../interface";
 
 export default function ModalHandle({ space }: { space: SpaceItem }) {
   const [open, setOpen] = useState(false);

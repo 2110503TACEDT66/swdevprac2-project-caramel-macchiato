@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { RxCross1 } from "react-icons/rx";
 import { useSession } from "next-auth/react";
 import Reserve from "@/libs/confirmReserve";
+import { SpaceItem } from "../../interface";
 interface Props {
   isOpen: boolean;
   handleClose: any;

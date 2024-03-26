@@ -2,6 +2,7 @@ import getSpaces from "@/libs/getSpaces";
 import Banner from "../components/Banner";
 import Card from "@/components/Card";
 import Link from "next/link";
+import { SpaceJson } from "../../interface";
 
 export default async function Home() {
   const spaces: SpaceJson = await getSpaces();

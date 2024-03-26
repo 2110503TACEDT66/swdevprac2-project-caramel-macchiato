@@ -7,7 +7,7 @@ export interface Reservation {
   __v: number;
 }
 
-interface SpaceItem {
+export interface SpaceItem {
   _id: string;
   name: string;
   address: string;
@@ -20,7 +20,7 @@ interface SpaceItem {
   id: string;
 }
 
-interface SpaceJson {
+export interface SpaceJson {
   success: boolean;
   count: number;
   pagination: Object;
