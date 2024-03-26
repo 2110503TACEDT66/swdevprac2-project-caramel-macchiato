@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { FaClock } from "react-icons/fa";
+import { SpaceItem } from "../../interface";
 
 interface Props {
   data: SpaceItem;

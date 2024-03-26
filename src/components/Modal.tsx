@@ -1,9 +1,11 @@
+"use client";
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { RxCross1 } from "react-icons/rx";
 import { useSession } from "next-auth/react";
 import Reserve from "@/libs/confirmReserve";
 import { SpaceItem } from "../../interface";
+import DateReserve from "./DateReserve";
 interface Props {
   isOpen: boolean;
   handleClose: any;
@@ -12,11 +14,12 @@ interface Props {
 
 export default function Modal({ isOpen, handleClose, data }: Props) {
   const session = useSession();
+  const [date, setDate] = useState<any>();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const result = Reserve(data._id, session.data!.user.token, "2011-11-10");
-    
+    const result = Reserve(data._id, session.data!.user.token, date!.$d as string);
+    console.log(result)
     handleClose();
   };
 
@@ -59,12 +62,17 @@ export default function Modal({ isOpen, handleClose, data }: Props) {
                   <p>{data.name}</p>
                   <p>{data.address}</p>
                   <p>{data.tel}</p>
-                  <button
-                    className="bg-black px-5 py-2 rounded-full text-white max-w-max "
-                    onClick={handleSubmit}
-                  >
-                    ยืนยัน
-                  </button>
+                  <p className="mt-5">กรุณาระบุวันที่</p>
+                  <div className="flex gap-5 items-center">
+                    <DateReserve date={(value: any) => setDate(value)} />
+
+                    <button
+                      className="bg-black px-5 py-2 rounded-full text-white max-w-max "
+                      onClick={handleSubmit}
+                    >
+                      ตกลง
+                    </button>
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

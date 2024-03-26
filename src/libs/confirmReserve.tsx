@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export default async function Reserve(id: string, token: string, date: string) {
   const response = await fetch(
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/workingspace/" +
@@ -10,14 +12,22 @@ export default async function Reserve(id: string, token: string, date: string) {
         authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        reserveDate: "2011-11-10",
+        reserveDate: date,
       }),
     }
   );
   if (!response.ok) {
-    alert("nooooo")
-  }else{
-
+    Swal.fire({
+      title: "Error!",
+      text: "Your reservation has reached limit",
+      icon: "error",
+    });
+  } else {
+    Swal.fire({
+      title: "Success!",
+      text: "Reserved successfully",
+      icon: "success",
+    });
     return await response.json();
   }
 }
