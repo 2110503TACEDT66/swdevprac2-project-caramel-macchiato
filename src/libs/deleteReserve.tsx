@@ -1,7 +1,10 @@
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+
 export default async function DeleteReservation(id: string, token: string) {
   const response = await fetch(
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/reservation/" +
-      id ,
+      id,
     {
       method: "Delete",
       headers: {
@@ -11,9 +14,18 @@ export default async function DeleteReservation(id: string, token: string) {
     }
   );
   if (!response.ok) {
-    alert("nooooo");
+    Swal.fire({
+      title: "Error!",
+      text: "Cannot Delete #" + id,
+      icon: "error",
+    });
   } else {
-    alert("delete"+id+"success");
+    Swal.fire({
+      title: "Success!",
+      text: "Deleted successfully",
+      icon: "success",
+    });
+    
     return await response.json();
   }
 }

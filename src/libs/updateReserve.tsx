@@ -21,21 +21,16 @@ export default async function UpdateReservation(
   if (!response.ok) {
     Swal.fire({
       title: "Error!",
-      text: "fucck id " + id,
+      text: "Cannot Update #" + id,
       icon: "error",
     });
   } else {
     Swal.fire({
       title: "Success!",
-      text: "Reserved successfully",
+      text: "Update successfully",
       icon: "success",
     });
 
-    if (!response.ok) {
-      alert("Update failed");
-    } else {
-      alert("Update successful for reservation with ID: " + id);
-      return await response.json();
-    }
+    return await response.json();
   }
 }

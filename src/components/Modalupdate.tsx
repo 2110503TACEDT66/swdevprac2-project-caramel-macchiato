@@ -7,6 +7,7 @@ import Reserve from "@/libs/confirmReserve";
 import { SpaceItem } from "../../interface";
 import DateReserve from "./DateReserve";
 import UpdateReservation from "@/libs/updateReserve";
+import { useRouter } from "next/navigation";
 interface Props {
   isOpen: boolean;
   handleClose: any;
@@ -14,14 +15,10 @@ interface Props {
   id: string;
 }
 
-export default  function Modalupdate({
-  isOpen,
-  handleClose,
-  data,
-  id,
-}: Props) {
+export default function Modalupdate({ isOpen, handleClose, data, id }: Props) {
   const session = useSession();
   const [date, setDate] = useState<any>();
+  const router = useRouter();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -30,8 +27,8 @@ export default  function Modalupdate({
       session.data!.user.token,
       date!.$d as string
     );
-    console.log(result);
     handleClose();
+    router.push("/booking/manage");
   };
 
   return (

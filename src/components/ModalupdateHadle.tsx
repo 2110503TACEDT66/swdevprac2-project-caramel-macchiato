@@ -21,7 +21,6 @@ export default function ModalupdateHandle({
 
   return (
     <div>
-      {space.remaining > 0 ? (
         <button
           className="bg-black px-5 py-2 rounded-full text-white max-w-max "
           onClick={() => {
@@ -34,11 +33,7 @@ export default function ModalupdateHandle({
         >
           {context}
         </button>
-      ) : (
-        <p className="bg-gray-400 px-5 py-2 rounded-full text-white max-w-max ">
-          เต็มแล้ว
-        </p>
-      )}
+     
 
       <Modalupdate
         isOpen={open}
