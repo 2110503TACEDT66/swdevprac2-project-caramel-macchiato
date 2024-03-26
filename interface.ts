@@ -2,9 +2,16 @@ export interface Reservation {
   _id: string;
   reserveDate: Date;
   user: string;
-  workingSpace: object;
+  workingSpace: RefWorkingSpace;
   createdAt: Date;
   __v: number;
+}
+export interface RefWorkingSpace {
+  _id: string;
+  name: string;
+  address: string;
+  tel: string;
+  id: string;
 }
 
 export interface SpaceItem {
@@ -18,6 +25,7 @@ export interface SpaceItem {
   __v: number;
   reservation: Reservation[];
   id: string;
+  image: string;
 }
 
 export interface SpaceJson {

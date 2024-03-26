@@ -9,10 +9,10 @@ import getUserProfile from "@/libs/getUserProfile";
 
 export default async function TopMenu() {
   const session = await getServerSession(authOptions);
-  var profile
+  var profile;
 
   if (session) {
-     profile = await getUserProfile(session.user.token);
+    profile = await getUserProfile(session.user.token);
   }
 
   return (
@@ -22,10 +22,17 @@ export default async function TopMenu() {
           <SiStarship className="text-blue-500" size={40} />
         </Link>
 
-        <TopMenuItem title="จองเลย" href="/booking" />
+        {/* <TopMenuItem title="จองเลย" href="/booking" /> */}
       </div>
       <div className="flex gap-4 items-center">
-        {session ? <p>Welcome {profile.data.name}</p> : ""}
+        {session ? (
+          <>
+            <p>Welcome {profile.data.name}</p>
+            <TopMenuItem title="การจองของคุณ" href="/booking/manage" />
+          </>
+        ) : (
+          <TopMenuItem title="Sign-Up" href="/register" />
+        )}
 
         <TopMenuItem
           title={session ? "Sign-Out" : "Sign-In"}

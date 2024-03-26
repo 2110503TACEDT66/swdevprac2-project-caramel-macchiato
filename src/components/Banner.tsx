@@ -38,7 +38,7 @@ export default function Banner() {
           assumenda
         </p>
         <Link
-          href="/booking"
+          href="#booking"
           className="bg-black max-w-max text-white px-6 py-3 mx-auto rounded-full"
         >
           จองเลย
