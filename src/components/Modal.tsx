@@ -18,8 +18,12 @@ export default function Modal({ isOpen, handleClose, data }: Props) {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const result = Reserve(data._id, session.data!.user.token, date!.$d as string);
-    console.log(result)
+    const result = Reserve(
+      data._id,
+      session.data!.user.token,
+      date!.$d as string
+    );
+    console.log(result);
     handleClose();
   };
 
@@ -65,13 +69,22 @@ export default function Modal({ isOpen, handleClose, data }: Props) {
                   <p className="mt-5">กรุณาระบุวันที่</p>
                   <div className="flex gap-5 items-center">
                     <DateReserve date={(value: any) => setDate(value)} />
-
-                    <button
-                      className="bg-black px-5 py-2 rounded-full text-white max-w-max "
-                      onClick={handleSubmit}
-                    >
-                      ตกลง
-                    </button>
+                    {date ? (
+                      <button
+                        className="bg-black px-5 py-2 rounded-full text-white max-w-max "
+                        onClick={handleSubmit}
+                        
+                      >
+                        ตกลง
+                      </button>
+                    ) : (
+                      <button
+                        className="bg-gray-300 px-5 py-2 rounded-full text-white max-w-max "
+                        disabled
+                      >
+                        ตกลง
+                      </button>
+                    )}
                   </div>
                 </div>
               </Dialog.Panel>
