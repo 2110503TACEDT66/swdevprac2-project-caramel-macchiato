@@ -5,9 +5,15 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { SiStarship } from "react-icons/si";
 import { useSession } from "next-auth/react";
+import getUserProfile from "@/libs/getUserProfile";
 
 export default async function TopMenu() {
   const session = await getServerSession(authOptions);
+  var profile
+
+  if (session) {
+     profile = await getUserProfile(session.user.token);
+  }
 
   return (
     <div className="flex justify-between items-center px-7 py-4 top-0 fixed z-10 bg-bg w-full">
@@ -19,7 +25,7 @@ export default async function TopMenu() {
         <TopMenuItem title="จองเลย" href="/booking" />
       </div>
       <div className="flex gap-4 items-center">
-        {session ? <p>Welcome {session?.user.name}</p> : ""}
+        {session ? <p>Welcome {profile.data.name}</p> : ""}
 
         <TopMenuItem
           title={session ? "Sign-Out" : "Sign-In"}
