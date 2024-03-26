@@ -12,7 +12,10 @@ export default async function TopMenu() {
   return (
     <div className="flex justify-between items-center px-7 py-4 top-0 fixed z-10 bg-bg w-full">
       <div className="flex gap-5 items-center">
-        <SiStarship className="text-blue-500" size={40} />
+        <Link href="/">
+          <SiStarship className="text-blue-500" size={40} />
+        </Link>
+
         <TopMenuItem title="จองเลย" href="/booking" />
       </div>
       <div className="flex gap-4 items-center">
