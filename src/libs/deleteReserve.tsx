@@ -14,9 +14,10 @@ export default async function DeleteReservation(id: string, token: string) {
     }
   );
   if (!response.ok) {
+    const ans = await response.json();
     Swal.fire({
       title: "Error!",
-      text: "Cannot Delete #" + id,
+      text: ans.message || "Delete Failed",
       icon: "error",
     });
   } else {
@@ -25,7 +26,7 @@ export default async function DeleteReservation(id: string, token: string) {
       text: "Deleted successfully",
       icon: "success",
     });
-    
+
     return await response.json();
   }
 }

@@ -17,11 +17,14 @@ export default async function Reserve(id: string, token: string, date: string) {
     }
   );
   if (!response.ok) {
+    const ans = await  response.json();
+
     Swal.fire({
       title: "Error!",
-      text: "Your reservation has reached limit",
+      text: ans.message || "Register Failed",
       icon: "error",
     });
+
   } else {
     Swal.fire({
       title: "Success!",

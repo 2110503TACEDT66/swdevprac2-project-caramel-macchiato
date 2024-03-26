@@ -42,10 +42,8 @@ export default async function SpaceDetail({ params }: Props) {
             <p>{space.data.tel}</p>
           </div>
 
-          <div className="flex gap-2 items-center mt-5">
             <ModalHandle space={space.data} context="จองเลย" />
-            <p>ที่ว่าง: {space.data.remaining}</p>
-          </div>
+
         </div>
       </div>
     </div>

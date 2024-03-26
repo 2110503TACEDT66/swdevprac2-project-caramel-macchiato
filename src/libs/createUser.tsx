@@ -12,9 +12,11 @@ export default async function registerUser(data: Object) {
     }
   );
   if (!response.ok) {
+    const ans = await  response.json();
+
     Swal.fire({
       title: "Error!",
-      text: "Register Failed",
+      text: ans.message || "Register Failed",
       icon: "error",
     });
   } else {

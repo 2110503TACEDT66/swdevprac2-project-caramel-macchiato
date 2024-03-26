@@ -10,6 +10,7 @@ export default async function getAllReservation(token: string) {
   );
 
   if (!response.ok) {
+
     throw new Error("Failed to fetch user");
   }
 

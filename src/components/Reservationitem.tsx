@@ -9,6 +9,7 @@ import { Reservation } from "../../interface";
 import DeleteReservation from "@/libs/deleteReserve";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 export default function ReservationItem({
   reservation,
 }: {
@@ -17,18 +18,23 @@ export default function ReservationItem({
   const session = useSession();
   const router = useRouter();
 
+  const [hide, setHide] = useState("");
+
   const handleDelete = (e: any) => {
     e.preventDefault();
     const result = DeleteReservation(reservation._id, session.data!.user.token);
+
+    setHide("hidden")
   };
 
   const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
     router.push(`/booking/edit/${reservation._id}`); // Navigate to the manage page with the reservation ID
   };
 
   return (
-    <div key={reservation._id} className="border p-4 my-4">
+    <div key={reservation._id} className={`border p-4 my-4 ${hide}`}>
       <p>Date: {reservation.reserveDate.toString()}</p>
       <p>User: {reservation.user}</p>
       <p>Working Space: {reservation.workingSpace.name}</p>

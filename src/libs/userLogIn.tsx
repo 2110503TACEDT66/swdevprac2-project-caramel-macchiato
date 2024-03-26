@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 export default async function userLogIn( username:string, userPassword:string) {
   const response = await fetch(
@@ -14,7 +15,14 @@ export default async function userLogIn( username:string, userPassword:string) {
     }
   );
   if (!response.ok) {
-    throw new Error("Failed to login");
+    const ans = await response.json();
+
+    Swal.fire({
+      title: "Error!",
+      text: ans.message ||"Failed to Login" ,
+      icon: "error",
+    });
+    
   }
   return await response.json();
 }

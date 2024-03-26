@@ -19,9 +19,11 @@ export default async function UpdateReservation(
     }
   );
   if (!response.ok) {
+    const ans = await response.json();
+
     Swal.fire({
       title: "Error!",
-      text: "Cannot Update #" + id,
+      text: ans.message ||"Cannot Update #" + id,
       icon: "error",
     });
   } else {

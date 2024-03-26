@@ -10,9 +10,10 @@ interface Props {
   isOpen: boolean;
   handleClose: any;
   data: SpaceItem;
+  decreaseRemain:any
 }
 
-export default function Modal({ isOpen, handleClose, data }: Props) {
+export default function Modal({ isOpen, handleClose, data,decreaseRemain }: Props) {
   const session = useSession();
   const [date, setDate] = useState<any>();
 
@@ -24,6 +25,8 @@ export default function Modal({ isOpen, handleClose, data }: Props) {
       date!.$d as string
     );
     console.log(result);
+
+    decreaseRemain()
     handleClose();
   };
 
