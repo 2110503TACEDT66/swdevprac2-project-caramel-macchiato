@@ -2,7 +2,7 @@ export interface Reservation {
   _id: string;
   reserveDate: Date;
   user: string;
-  workingSpace: string;
+  workingSpace: object;
   createdAt: Date;
   __v: number;
 }
