@@ -22,12 +22,12 @@ export default function Banner() {
   ];
 
   return (
-    <div className="my-40">
+    <div className="py-40">
       <div className="flex flex-col justify-center gap-7 w-full">
         <span className="px-4 py-2 bg-blue-100 mx-auto max-w-max rounded-full text-blue-600">
           caramel macchiato
         </span>
-        <h1 className="max-w-4xl text-8xl font-black text-center mx-auto">
+        <h1 className="max-w-5xl text-8xl font-extrabold text-center mx-auto">
           <span className="bg-gradient-to-b from-blue-700 to-blue-400 bg-clip-text text-transparent">
             Co-working {" "}
           </span>
