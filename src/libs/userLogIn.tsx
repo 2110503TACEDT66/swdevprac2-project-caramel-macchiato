@@ -1,6 +1,9 @@
 import Swal from "sweetalert2";
 
-export default async function userLogIn( username:string, userPassword:string) {
+export default async function userLogIn(
+  username: string,
+  userPassword: string
+) {
   const response = await fetch(
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/auth/login",
     {
@@ -17,12 +20,13 @@ export default async function userLogIn( username:string, userPassword:string) {
   if (!response.ok) {
     const ans = await response.json();
 
-    Swal.fire({
+   Swal.fire({
       title: "Error!",
-      text: ans.message ||"Failed to Login" ,
+      text: ans.message || "Failed to Login",
       icon: "error",
     });
-    
   }
-  return await response.json();
+  const profileData = await response.json();
+
+  return profileData;
 }

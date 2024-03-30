@@ -6,9 +6,6 @@ import { screen, render, waitFor } from "@testing-library/react";
 describe("Remote User Log-In", () => {
   var logInPromise: any;
   var logInJsonResult: any;
-  var token: string;
-  var profilePromise: any;
-  var profileJsonResult: any;
 
   beforeAll(async () => {
     const email = "casassaddl@gmail.com";
@@ -19,7 +16,5 @@ describe("Remote User Log-In", () => {
 
   it("userLogIn must return correct results", () => {
     expect(logInJsonResult.success).toBeTruthy();
-    
   });
-
 });
