@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Booking() {
   const router = useRouter();
-  router.push("/");
+  // router.push("/");
   return (
     <div className="flex justify-center items-center min-h-screen">
       <CircularProgress />

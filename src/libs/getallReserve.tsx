@@ -2,6 +2,7 @@ export default async function getAllReservation(token: string) {
   const response = await fetch(
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/reservation",
     {
+      cache: "no-cache",
       method: "GET",
       headers: {
         authorization: `Bearer ${token}`,

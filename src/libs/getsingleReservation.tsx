@@ -5,6 +5,7 @@ export default async function getReservation(id: String,token:string) {
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/reservation/" +
       id,
     {
+      cache: "no-cache",
       method: "GET",
       headers: {
         authorization: `Bearer ${token}`,

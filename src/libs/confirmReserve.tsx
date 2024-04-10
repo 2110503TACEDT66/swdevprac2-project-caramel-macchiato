@@ -6,6 +6,7 @@ export default async function Reserve(id: string, token: string, date: string) {
       id +
       "/reservation",
     {
+      cache: "no-cache",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,14 +18,13 @@ export default async function Reserve(id: string, token: string, date: string) {
     }
   );
   if (!response.ok) {
-    const ans = await  response.json();
+    const ans = await response.json();
 
     Swal.fire({
       title: "Error!",
       text: ans.message || "Register Failed",
       icon: "error",
     });
-
   } else {
     Swal.fire({
       title: "Success!",

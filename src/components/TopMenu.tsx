@@ -22,7 +22,7 @@ export default async function TopMenu() {
           <SiStarship className="text-blue-500" size={40} />
         </Link>
 
-        {/* <TopMenuItem title="จองเลย" href="/booking" /> */}
+        <TopMenuItem title="จองเลย" href="/booking" />
       </div>
       <div className="flex gap-4 items-center">
         {session ? (

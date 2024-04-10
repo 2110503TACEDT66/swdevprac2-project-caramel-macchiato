@@ -8,6 +8,7 @@ export default async function userLogIn(
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/auth/login",
     {
       method: "POST",
+      cache: "no-cache",
       headers: {
         "Content-Type": "application/json",
       },
@@ -20,7 +21,7 @@ export default async function userLogIn(
   if (!response.ok) {
     const ans = await response.json();
 
-   Swal.fire({
+    Swal.fire({
       title: "Error!",
       text: ans.message || "Failed to Login",
       icon: "error",

@@ -4,6 +4,7 @@ export default async function registerUser(data: Object) {
   const response = await fetch(
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/auth/register",
     {
+      cache: "no-cache",
       method: "POST",
       headers: {
         "Content-Type": "application/json",

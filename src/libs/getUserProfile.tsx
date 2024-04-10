@@ -3,6 +3,7 @@ export default async function getUserProfile(token: string) {
     "https://presentation-day-1-caramel-macchiato.vercel.app/api/v1/auth/me",
     {
       method: "GET",
+      cache: "no-cache",
       headers: {
         authorization: `Bearer ${token}`,
       },
